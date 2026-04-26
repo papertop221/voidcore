@@ -276,7 +276,11 @@ class VowelStripper:
         'you', 'are', 'for', 'and', 'the', 'one', 'two', 'three', 'four',
         'five', 'six', 'seven', 'eight', 'nine', 'zero', 'is', 'or', 'in',
         'as', 'at', 'by', 'be', 'if', 'it', 'me', 'we', 'so', 'to', 'up',
-        'no', 'an', 'on', 'of', 'do', 'go'
+        'no', 'an', 'on', 'of', 'do', 'go',
+        # CLI & Tech Essentials
+        'git', 'ls', 'cd', 'cp', 'mv', 'rm', 'ps', 'vi', 'vim', 'nano',
+        'pip', 'npm', 'npx', 'yarn', 'sudo', 'apt', 'pkg', 'ssh', 'curl',
+        'wget', 'grep', 'sed', 'awk', 'cat', 'tail', 'head', 'find', 'diff'
     }
     
     def strip(self, text: str) -> str:

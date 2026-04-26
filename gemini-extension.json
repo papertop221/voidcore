@@ -2,5 +2,5 @@
   "name": "voidcore",
   "version": "1.0.0",
   "description": "VoidCore: Sucks in tokens like a black hole",
-  "main": "GEMINI.md"
+  "contextFileName": "GEMINI.md"
 }

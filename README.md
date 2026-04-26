@@ -1,35 +1,52 @@
-<div align="center">
-  <h1>🕳️ VoidCore Extension</h1>
-  <p><strong>The Black Hole of Token Compression for Gemini CLI</strong></p>
-  <img src="https://img.shields.io/badge/Compression-98%25-red?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/State_of_the_Art-SOTA-blue?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/CLI-Gemini-orange?style=for-the-badge" />
-</div>
+# 🕳️ VoidCore (v2.0)
 
-## 🌌 What is VoidCore?
+**The Singularity Level Token Compressor for Gemini CLI.**
 
-VoidCore (formerly Zen) is an extreme token-saving extension for the Gemini CLI. It acts like a black hole, sucking in all the useless "fluff" from your prompts and leaving only the dense, high-information core.
+VoidCore is an ultra-aggressive token-saving extension that intercepts your prompts and compresses them using 7 stages of surgical precision before they hit the API. It "sucks in" tokens like a black hole, allowing you to send massive amounts of context for a fraction of the cost.
 
-By utilizing multi-stage algorithmic compression without relying on local AI models, it drops API token consumption by up to **98%**.
+## 📊 Performance Statistics
 
-## 🚀 The 5 Stages of Void Compression
+| Mode | Token Savings | Use Case |
+| :--- | :--- | :--- |
+| **Balanced** | **40% - 60%** | Daily coding and queries. |
+| **Aggressive** | **70% - 85%** | Complex tasks with large context. |
+| **Singularity** | **Up to 98%** | Massive repetitive prompts via Delta Hashing. |
 
-1. **TextRank Density Pruning:** Analyzes long texts and immediately drops sentences that lack keywords or technical relevance.
-2. **Delta/Diff Hashing:** Remembers your last prompt. If you just ask for a small revision, it sends a `[DIFF]` patch instead of the whole text again.
-3. **Caveman Protocol:** Strips all polite filler, pronouns, and auxiliary verbs ("please", "help me", "can you").
-4. **BPE Unicode Forcing:** Replaces multi-token words with mathematical symbols and unicode characters that strictly consume 1 token.
-5. **Vowel Stripping:** Words longer than 3 characters have their vowels annihilated. `Terminal` becomes `trmnl`.
+## 🚀 Key Features (The 7 Stages)
 
-## 🛠️ Example
+1.  **TextRank Density Pruning**: Removes low-signal sentences and fluff.
+2.  **Delta/Diff Hashing**: Only sends the *changes* from your previous prompt.
+3.  **Caveman Protocol**: Strips politeness, pronouns, and auxiliary verbs.
+4.  **BPE Unicode Forcing**: Replaces common technical terms (e.g., `function`) with 1-token symbols (e.g., `ƒ`).
+5.  **Vowel Stripping**: Removes vowels from non-critical words (e.g., `compress` -> `cmprss`).
+6.  **Context Variable Mapping**: Replaces repeated phrases with short variables.
+7.  **Semantic Code Compression**: Minifies code blocks while keeping logic intact.
 
-**Human Input (~25 tokens):**
-> "Please help me find the long documentation file and search for the error message inside the database configuration."
+## 🛠️ Installation
 
-**VoidCore Output (~5 tokens):**
-> `fnd lng doc fl & srch 4 err msg @ db cfg`
+1. Clone to your Gemini CLI extensions folder:
+   ```bash
+   git clone https://github.com/papertop221/voidcore.git ~/.gemini/extensions/voidcore
+   ```
+2. Reload skills in Gemini CLI:
+   ```bash
+   /skills reload
+   ```
 
-## 📦 Installation
+## 📖 How It Works
 
-This extension is built directly into the Gemini CLI environment. The `voidcore_core.py` script automatically intercepts and crushes your prompts before they hit the API.
+VoidCore works on the **Input Level**. It compresses what you send. Gemini is instructed via `GEMINI.md` on how to decode these signals. 
 
-> "Speak less, prompt more." — VoidCore
+**CRITICAL:** The AI will always respond in **Normal Human Language**. The compression is invisible to the output, saving you tokens only where it matters: the input overhead.
+
+## 📜 Decoding Map (Internal)
+
+If you see these symbols in your logs, here is what they mean:
+- `ƒ` : function
+- `δ` : data
+- `⚡` : optimize
+- `✗` : error
+- `[DIFF-xxxx]` : Delta update from previous message.
+
+---
+*Created by [papertop221](https://github.com/papertop221)*
