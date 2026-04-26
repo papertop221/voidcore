@@ -1,0 +1,51 @@
+{
+  "verbose": false,
+  "aggressive": true,
+  "show_stats": true,
+  "show_diff": false,
+  "cache_file": ".voidcore_cache",
+  
+  "compression_stages": {
+    "enable_textrank": true,
+    "density_threshold": 0.2,
+    "enable_delta": true,
+    "enable_caveman": true,
+    "enable_bpe": true,
+    "enable_vowels": true,
+    "enable_context": true,
+    "enable_code_compression": true
+  },
+  
+  "profiles": {
+    "ultra_aggressive": {
+      "enable_textrank": true,
+      "density_threshold": 0.1,
+      "enable_delta": true,
+      "enable_caveman": true,
+      "enable_bpe": true,
+      "enable_vowels": true,
+      "enable_context": true,
+      "enable_code_compression": true
+    },
+    "balanced": {
+      "enable_textrank": true,
+      "density_threshold": 0.3,
+      "enable_delta": true,
+      "enable_caveman": true,
+      "enable_bpe": true,
+      "enable_vowels": false,
+      "enable_context": true,
+      "enable_code_compression": true
+    },
+    "conservative": {
+      "enable_textrank": true,
+      "density_threshold": 0.4,
+      "enable_delta": true,
+      "enable_caveman": true,
+      "enable_bpe": false,
+      "enable_vowels": false,
+      "enable_context": true,
+      "enable_code_compression": false
+    }
+  }
+}
