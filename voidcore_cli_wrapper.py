@@ -35,7 +35,7 @@ class GeminiCLIWrapper:
             'enable_vowels': True,
             'enable_context': True,
             'enable_code_compression': True,
-            'density_threshold': 0.2,
+            'density_threshold': 0.6,
             'cache_file': '.voidcore_cache',
             'show_stats': True,
             'show_diff': False,

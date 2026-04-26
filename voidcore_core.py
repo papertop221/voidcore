@@ -25,10 +25,16 @@ class TextRankPruner:
         'return', 'import', 'module', 'api', 'database', 'config', 'data',
         'algorithm', 'array', 'string', 'integer', 'boolean', 'object',
         'property', 'attribute', 'parameter', 'argument', 'exception',
-        'debug', 'test', 'compile', 'execute', 'run', 'output', 'input'
+        'debug', 'test', 'compile', 'execute', 'run', 'output', 'input',
+        'git', 'bash', 'shell', 'python', 'javascript', 'typescript', 'java',
+        'cpp', 'rust', 'golang', 'docker', 'kubernetes', 'aws', 'gcp', 'azure',
+        'sql', 'nosql', 'json', 'xml', 'yaml', 'html', 'css', 'react', 'vue',
+        'angular', 'node', 'express', 'flask', 'django', 'spring', 'maven',
+        'gradle', 'npm', 'pip', 'cargo', 'build', 'deploy', 'patch', 'fix',
+        'refactor', 'optimize', 'security', 'auth', 'token', 'jwt', 'oauth'
     }
     
-    def __init__(self, threshold: float = 0.3):
+    def __init__(self, threshold: float = 0.6):
         self.threshold = threshold
     
     def calculate_density(self, sentence: str) -> float:
@@ -154,19 +160,30 @@ class CavemanProtocol:
     """Remove polite filler, pronouns, and auxiliary verbs."""
     
     FILLER_WORDS = {
-        'please', 'thank', 'thanks', 'appreciate', 'appreciate', 'help',
-        'can', 'could', 'would', 'should', 'may', 'might', 'must',
-        'i', 'me', 'my', 'mine', 'myself', 'we', 'us', 'our', 'ours',
-        'you', 'your', 'yours', 'yourself', 'he', 'him', 'his', 'she',
-        'her', 'hers', 'it', 'its', 'they', 'them', 'their', 'theirs',
-        'am', 'is', 'are', 'was', 'were', 'being', 'be', 'been',
-        'do', 'does', 'did', 'have', 'has', 'had', 'having',
-        'get', 'got', 'getting', 'seem', 'seemed', 'seeming',
-        'look', 'looked', 'looking', 'try', 'tried', 'trying',
-        'also', 'just', 'really', 'very', 'quite', 'rather',
-        'how', 'what', 'why', 'which', 'that', 'this', 'these', 'those',
-        'and', 'or', 'but', 'if', 'because', 'as', 'while', 'when',
-        'a', 'an', 'the', 'so', 'too', 'not', 'no', 'yes',
+        'please', 'thank', 'thanks', 'appreciate', 'help', 'can', 'could', 'would',
+        'should', 'may', 'might', 'must', 'i', 'me', 'my', 'mine', 'myself', 'we',
+        'us', 'our', 'ours', 'you', 'your', 'yours', 'yourself', 'he', 'him', 'his',
+        'she', 'her', 'hers', 'it', 'its', 'they', 'them', 'their', 'theirs',
+        'am', 'is', 'are', 'was', 'were', 'being', 'be', 'been', 'do', 'does',
+        'did', 'have', 'has', 'had', 'having', 'get', 'got', 'getting', 'seem',
+        'seemed', 'seeming', 'look', 'looked', 'looking', 'try', 'tried', 'trying',
+        'also', 'just', 'really', 'very', 'quite', 'rather', 'how', 'what', 'why',
+        'which', 'that', 'this', 'these', 'those', 'and', 'or', 'but', 'if', 'because',
+        'as', 'while', 'when', 'a', 'an', 'the', 'so', 'too', 'not', 'no', 'yes',
+        'hello', 'hi', 'hey', 'there', 'please', 'kindly', 'any', 'some', 'many',
+        'much', 'more', 'most', 'somehow', 'anyway', 'actually', 'basically',
+        'literally', 'honestly', 'maybe', 'perhaps', 'probably', 'certainly',
+        'definitely', 'clearly', 'simply', 'really', 'even', 'still', 'now', 'then',
+        # Indonesian Fillers
+        'aku', 'saya', 'kamu', 'anda', 'kita', 'kami', 'mereka', 'dia', 'ia',
+        'ini', 'itu', 'apa', 'siapa', 'kapan', 'dimana', 'kenapa', 'mengapa',
+        'bagaimana', 'yang', 'dan', 'atau', 'tapi', 'namun', 'jika', 'kalau',
+        'karena', 'untuk', 'dengan', 'dari', 'ke', 'di', 'ada', 'adalah', 'yaitu',
+        'bahwa', 'sudah', 'telah', 'akan', 'sedang', 'bisa', 'dapat', 'ingin',
+        'mau', 'pengen', 'boleh', 'harus', 'perlu', 'mungkin', 'sangat', 'sekali',
+        'banget', 'cuma', 'hanya', 'saja', 'juga', 'pun', 'lagi', 'lagian', 'kok',
+        'sih', 'deh', 'dong', 'ya', 'tidak', 'gak', 'nggak', 'bukan', 'halo',
+        'hai', 'terima', 'kasih', 'tolong', 'mohon', 'coba', 'begitu', 'begini',
     }
     
     CONTRACTION_MAP = {
@@ -214,7 +231,7 @@ class BPEUnicodeForcer:
     """Replace multi-token words with 1-token unicode characters."""
     
     SYMBOL_MAP = {
-        # Common words to symbols
+        # Core Development
         'function': 'ƒ', 'class': '◊', 'method': 'μ', 'data': 'δ',
         'variable': 'ν', 'return': '↩', 'import': '⇐', 'export': '⇒',
         'error': '✗', 'success': '✓', 'warning': '⚠', 'info': 'ℹ',
@@ -234,24 +251,43 @@ class BPEUnicodeForcer:
         'package': '▢', 'library': '📚', 'framework': '⊞', 'api': '⚙',
         'endpoint': '◇', 'authentication': '🔑', 'authorization': '🚪',
         'permission': '👤', 'role': '👥', 'user': '👤', 'admin': '👑',
+        # Expanded Tech Terms
+        'repository': '🗄️', 'branch': '🌿', 'commit': '💾', 'merge': '🔀',
+        'pull': '⬇️', 'push': '⬆️', 'script': '📜', 'process': '⚙️',
+        'service': '🛠️', 'application': '📱', 'component': '🧱',
+        'container': '📦', 'image': '🖼️', 'volume': '🔊', 'environment': '🌍',
+        'production': '🚀', 'development': '🛠️', 'staging': '🧪',
+        'template': '📋', 'pattern': '🧩', 'middleware': '🪟',
+        'gateway': '🌉', 'proxy': '🛡️', 'firewall': '🧱', 'protocol': '📜',
+        'header': '👤', 'body': '📄', 'cookie': '🍪', 'session': '⏰',
+        'cache': '🧊', 'stream': '🌊', 'buffer': '📥', 'event': '🔔',
+        'listener': '👂', 'emitter': '📢', 'thread': '🧵', 'task': '📋',
+        'job': '💼', 'worker': '👷', 'queue': '🚶', 'stack': '📚',
+        'heap': '⛰️', 'garbage': '🗑️', 'compiler': '🏗️', 'interpreter': '🗣️',
+        'assembler': '🛠️', 'debugger': '🪲', 'logger': '📝', 'monitor': '🖥️',
+        'metrics': '📈', 'alert': '🚨', 'dashboard': '📊', 'report': '📄',
+        'documentation': '📚', 'readme': '📖', 'license': '📜',
+        # Phrases to symbols
+        'how to': '❓', 'what is': '¿', 'why is': '⁉️', 'can you': '🤲',
+        'could you': '🤲', 'please help': '🆘', 'fix this': '🩹',
+        'explain this': '💡', 'optimize this': '⚡', 'refactor this': '🔨',
+        'create a': '🆕', 'update the': '🆙', 'delete this': '🗑️',
+        'search for': '🔍', 'validate this': '✅', 'secure this': '🛡️',
     }
     
     REVERSE_SYMBOL_MAP = {v: k for k, v in SYMBOL_MAP.items()}
     
     def __init__(self):
-        # Create pattern for all symbols
+        # Sort keys by length descending to match longer phrases first
+        sorted_keys = sorted(self.SYMBOL_MAP.keys(), key=len, reverse=True)
         self.symbol_pattern = re.compile(
-            r'\b(' + '|'.join(re.escape(w) for w in self.SYMBOL_MAP.keys()) + r')\b',
+            '(' + '|'.join(re.escape(w) for w in sorted_keys) + ')',
             re.IGNORECASE
         )
     
     def encode(self, text: str) -> str:
-        """Replace words with symbols."""
-        def replacer(match):
-            word = match.group(0).lower()
-            return self.SYMBOL_MAP.get(word, word)
-        
-        return self.symbol_pattern.sub(replacer, text)
+        """Replace terms with symbols using regex."""
+        return self.symbol_pattern.sub(lambda m: self.SYMBOL_MAP.get(m.group(0).lower(), m.group(0)), text)
     
     def decode(self, text: str) -> str:
         """Restore symbols back to words (for validation)."""
@@ -271,34 +307,27 @@ class VowelStripper:
     VOWELS = set('aeiouAEIOU')
     VOWEL_PATTERN = re.compile(r'[aeiouAEIOU]')
     
-    # Preserve certain words that become unreadable
+    # Preserve only absolute essentials
     PRESERVE = {
-        'you', 'are', 'for', 'and', 'the', 'one', 'two', 'three', 'four',
-        'five', 'six', 'seven', 'eight', 'nine', 'zero', 'is', 'or', 'in',
-        'as', 'at', 'by', 'be', 'if', 'it', 'me', 'we', 'so', 'to', 'up',
-        'no', 'an', 'on', 'of', 'do', 'go',
-        # CLI & Tech Essentials
-        'git', 'ls', 'cd', 'cp', 'mv', 'rm', 'ps', 'vi', 'vim', 'nano',
-        'pip', 'npm', 'npx', 'yarn', 'sudo', 'apt', 'pkg', 'ssh', 'curl',
-        'wget', 'grep', 'sed', 'awk', 'cat', 'tail', 'head', 'find', 'diff'
+        'if', 'in', 'is', 'it', 'to', 'do', 'go', 'no', 'an', 'on', 'of',
+        'git', 'ls', 'cd', 'cp', 'mv', 'rm', 'ps', 'vi', 'pip', 'npm'
     }
     
+    WORD_PATTERN = re.compile(r'[a-zA-Z]{2,}') # Only strip words with 2+ chars
+    
     def strip(self, text: str) -> str:
-        """Remove vowels from longer words."""
-        words = text.split()
-        stripped = []
-        
-        for word in words:
-            # Preserve short words and special ones
-            if len(word) <= 3 or word.lower() in self.PRESERVE:
-                stripped.append(word)
-            else:
-                # Keep first letter and consonants
-                first = word[0]
-                rest = self.VOWEL_PATTERN.sub('', word[1:])
-                stripped.append(first + rest)
-        
-        return ' '.join(stripped)
+        """Ruthlessly remove vowels using regex."""
+        def replacer(match):
+            word = match.group(0)
+            if word.lower() in self.PRESERVE:
+                return word
+            
+            # Keep first letter and strip rest of vowels
+            first = word[0]
+            rest = self.VOWEL_PATTERN.sub('', word[1:])
+            return first + rest
+
+        return self.WORD_PATTERN.sub(replacer, text)
 
 
 # ============================================================================
@@ -353,16 +382,20 @@ class CodeBlockCompressor:
         }
     
     def compress_code_blocks(self, text: str) -> str:
-        """Find and compress code blocks."""
-        # Match code blocks
+        """Extreme minification of code blocks."""
         code_block_pattern = r'```.*?\n(.*?)\n```'
         
         def compress_block(match):
             code = match.group(1)
-            # Remove comments
+            # Remove comments (multi-line and single-line)
+            code = re.sub(r'/\*[\s\S]*?\*/', '', code)
             code = re.sub(r'//.*$', '', code, flags=re.MULTILINE)
             code = re.sub(r'#.*$', '', code, flags=re.MULTILINE)
-            # Compress whitespace
+            # Remove all non-essential newlines and indentation
+            code = re.sub(r'\n\s*', ' ', code)
+            # Remove spaces around operators and delimiters
+            code = re.sub(r'\s*([=\+\-\*/%&\|\^!<>\{\}\[\]\(\),:;])\s*', r'\1', code)
+            # Multi-space to single space
             code = re.sub(r'\s+', ' ', code)
             return f"```{code.strip()}```"
         
@@ -380,7 +413,7 @@ class VoidCoreCompressor:
         self.config = config or {}
         
         # Initialize all stages
-        self.textrank = TextRankPruner(threshold=self.config.get('density_threshold', 0.2))
+        self.textrank = TextRankPruner(threshold=self.config.get('density_threshold', 0.6))
         self.delta = DeltaCompressor(cache_file=self.config.get('cache_file', '.voidcore_cache'))
         self.caveman = CavemanProtocol()
         self.bpe = BPEUnicodeForcer()
@@ -417,15 +450,15 @@ class VoidCoreCompressor:
             result, _ = self.delta.compute_diff(result)
             self.stats['stages_applied'].append('Delta')
         
-        # Stage 3: Caveman Protocol
-        if self.config.get('enable_caveman', True):
-            result = self.caveman.strip(result)
-            self.stats['stages_applied'].append('Caveman')
-        
-        # Stage 4: BPE Unicode
+        # Stage 3: BPE Unicode
         if self.config.get('enable_bpe', True):
             result = self.bpe.encode(result)
             self.stats['stages_applied'].append('BPE-Unicode')
+
+        # Stage 4: Caveman Protocol
+        if self.config.get('enable_caveman', True):
+            result = self.caveman.strip(result)
+            self.stats['stages_applied'].append('Caveman')
         
         # Stage 5: Vowel Stripping (only in aggressive mode)
         if aggressive and self.config.get('enable_vowels', True):
@@ -446,7 +479,7 @@ class VoidCoreCompressor:
         self.stats['compressed_tokens'] = self.estimate_tokens(result)
         ratio = self.stats['original_tokens'] - self.stats['compressed_tokens']
         self.stats['compression_ratio'] = min(
-            98.0, 
+            99.9, 
             (ratio / self.stats['original_tokens'] * 100) if self.stats['original_tokens'] > 0 else 0
         )
         

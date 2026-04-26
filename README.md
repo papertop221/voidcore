@@ -8,9 +8,9 @@ VoidCore is an ultra-aggressive token-saving extension that intercepts your prom
 
 | Mode | Token Savings | Use Case |
 | :--- | :--- | :--- |
-| **Balanced** | **40% - 60%** | Daily coding and queries. |
-| **Aggressive** | **70% - 85%** | Complex tasks with large context. |
-| **Singularity** | **Up to 98%** | Massive repetitive prompts via Delta Hashing. |
+| **Balanced** | **50% - 70%** | Daily coding and queries. |
+| **Aggressive** | **70% - 90%** | Complex tasks with large context. |
+| **Singularity** | **Up to 99.9%** | Massive repetitive prompts via Delta Hashing. |
 
 ## 🚀 Key Features (The 7 Stages)
 

@@ -4,19 +4,28 @@ description: >
   VoidCore token-saving extension. Use this when you need to process highly compressed inputs using Information Density Pruning, Diff Hashing, and Unicode Symbol Mapping. 
 ---
 
-# VOIDCORE PROTOCOL (Singularity Efficiency)
+# VOIDCORE PROTOCOL (SINGULARITY LEVEL COMPRESSION)
 
-When this mode is active, the user's input is intercepted and processed by the `VoidCoreCompressor` pipeline. You will receive text that is dense, lacks most vowels in non-critical words, and uses specific Unicode symbols for technical terms.
+When this mode is active, the user's input is processed by the `VoidCoreCompressor` pipeline. You will receive text that is extremely dense, almost entirely vowel-stripped, and uses a comprehensive Unicode symbol map.
 
 ## AI Execution Rules
-1.  **Decoding Logic:** Refer to the decoding map in `GEMINI.md` to translate symbols (e.g., `ƒ` -> function, `ν` -> variable).
-2.  **Context Awareness:** If the input looks like `[DIFF-hash]`, it is a delta from a previous prompt. Focus on the `@index:new_word` or `+added_word` markers.
-3.  **Vowel Reconstruction:** Mentally reconstruct vowel-stripped words based on context (e.g., `cmprss` -> compress, `implmnt` -> implement).
-4.  **Response Format (MANDATORY):** Respond in **Normal Human Language**. Do NOT mirror the compressed style in your output.
-5.  **Technical Accuracy:** Maintain high precision. Despite the compression, the technical substance is preserved.
+1.  **Decoding Logic:** Use this map to understand technical terms:
+    - ƒ:function, ◊:class, μ:method, δ:data, ν:variable, ↩:return, ⇐:import, ⇒:export
+    - ✗:error, ✓:success/test, ⚠:warning, ℹ:info, 🐛:debug, 📄:file, 📁:folder
+    - ⊗:database, ◻:server, ◼:client, →:request, ←:response, ❓:query, ⌘:command
+    - ⚙:config, π:parameter, ⍺:argument, ⇓:output, ⇑:input, ↻:loop, ◇:condition/endpoint
+    - Α:algorithm, ⚡:optimize/performance, 📦:memory, ⊙:cpu, 🌐:network, 🔒:security
+    - 🗄️:repo, 🌿:branch, 💾:commit, 🔀:merge, ⬇️:pull, ⬆️:push, 📜:script, 🧱:component
+    - 🔑:auth, 🚪:auth, 👤:user, 🪙:token, ∅:null, β:boolean, []:array, {}:object
+    - ¿:what is, ⁉️:why is, 🤲:can/could you, 🆘:please help, 🩹:fix, 💡:explain, 🆕:create, 🆙:update, 🔍:search
+2.  **Context Awareness:** If input is `[DIFF-hash]`, it is a delta. Send ONLY the new information.
+3.  **Vowel Reconstruction:** Words are ruthlessly stripped (e.g., `ndrstnd` -> understand, `mplmnt` -> implement).
+4.  **Response Format (MANDATORY):** Respond in **Normal Human Language**. Do NOT mirror the compressed style.
+5.  **Technical Accuracy:** Maintain high precision despite extreme compression.
 
 ## Integration Details
-- **TextRank:** Removes sentences with low technical density.
-- **Caveman:** Strips filler words and politeness.
-- **BPE-Unicode:** Maps common dev terms to single-token symbols.
-- **Vowel Stripping:** Removes vowels from non-essential words > 3 chars.
+- **TextRank:** Prunes sentences with < 0.6 technical density.
+- **Caveman:** Annihilates all filler words and pronouns.
+- **BPE-Unicode:** Maps common terms and phrases to 1-token symbols.
+- **Vowel Stripping:** Strips vowels from ALL words except absolute essentials (if, in, is).
+- **Extreme Minification:** Strips all whitespace and comments from code blocks.
